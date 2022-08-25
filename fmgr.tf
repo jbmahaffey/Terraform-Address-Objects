@@ -46,3 +46,7 @@ resource "fortimanager_object_firewall_addrgrp" "testobj" {
     fortimanager_object_firewall_address.testobj
   ]
 }
+
+output "addresses" {
+  value = fortimanager_object_firewall_addrgrp.testobj
+}
