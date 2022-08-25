@@ -6,10 +6,15 @@ terraform {
   }
 }
 
+variable "password" {
+  sensitive = true
+  type = string
+}
+
 provider "fortimanager" {
   hostname     = "192.168.101.99"
   username     = "admin"
-  password     = ""
+  password     = var.password
   insecure     = "true"
 
   scopetype = "adom"
