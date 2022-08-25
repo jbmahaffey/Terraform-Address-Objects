@@ -11,6 +11,7 @@ resource "fortimanager_packages_firewall_policy" "labelname" {
     srcintf = ["any"]
     dstintf = ["any"]
     service = ["ALL"]
+    name = "test_policy"
     schedule = "always"
     adom = "Test"
     pkg = fortimanager_packages_pkg.terrapackage.name
