@@ -23,14 +23,22 @@ provider "fortimanager" {
 
 variable "testobj" {
   default = {
-    test1 = [
-        "192.168.0.0",
-        "255.255.255.0"
-      ]
-    test2 = [
-        "192.168.101.0",
-        "255.255.255.0"
-      ]
+    test1 = {
+        subnet = [
+          "192.168.0.0",
+          "255.255.255.0"
+        ]
+        type = "ipmask"
+        obj_type = "ip"
+    }
+    test2 = {
+        subnet = [
+          "192.168.101.0",
+          "255.255.255.0"
+        ]
+        type = "ipmask"
+        obj_type = "ip"
+    }
     }
 }
 
@@ -38,7 +46,7 @@ resource "fortimanager_object_firewall_address" "testobj" {
   for_each = var.testobj
   name = each.key
   obj_type = "ip"
-  subnet = each.value
+  subnet = each.value["subnet"]
   type = "ipmask"
 }
 
