@@ -24,20 +24,20 @@ provider "fortimanager" {
 variable "testobj" {
   default = {
     test1 = {
-        subnet = [
-          "192.168.0.0",
+        "subnet" = [
+          "192.168.2.0",
           "255.255.255.0"
         ]
-        type = "ipmask"
-        obj_type = "ip"
+        "type" = "ipmask"
+        "obj_type" = "ip"
     }
     test2 = {
-        subnet = [
+        "subnet" = [
           "192.168.101.0",
           "255.255.255.0"
         ]
-        type = "ipmask"
-        obj_type = "ip"
+        "type" = "ipmask"
+        "obj_type" = "ip"
     }
     }
 }
