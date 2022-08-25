@@ -9,7 +9,7 @@ terraform {
 provider "fortimanager" {
   hostname     = "192.168.101.99"
   username     = "admin"
-  password     = "$3cr3t$3cr3t"
+  password     = ""
   insecure     = "true"
 
   scopetype = "adom"
@@ -28,7 +28,6 @@ variable "testobj" {
       ]
     }
 }
-  
 
 resource "fortimanager_object_firewall_address" "testobj" {
   for_each = var.testobj
