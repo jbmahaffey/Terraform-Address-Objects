@@ -30,6 +30,7 @@ variable "testobj" {
         ]
         "type" = "ipmask"
         "obj_type" = "ip"
+        "fqdn" = ""
     }
     test2 = {
         "subnet" = [
@@ -38,6 +39,7 @@ variable "testobj" {
         ]
         "type" = "ipmask"
         "obj_type" = "ip"
+        "fqdn" = ""
     }
     }
 }
@@ -45,9 +47,10 @@ variable "testobj" {
 resource "fortimanager_object_firewall_address" "testobj" {
   for_each = var.testobj
   name = each.key
-  obj_type = "ip"
+  obj_type = each.value["obj_type"]
   subnet = each.value["subnet"]
-  type = "ipmask"
+  fqdn = each.value["fqdn"]
+  type = each.value["type"]
 }
 
 resource "fortimanager_object_firewall_addrgrp" "testobj" {
